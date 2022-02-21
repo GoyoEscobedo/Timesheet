@@ -53,4 +53,10 @@ public class TimesheetProjectServiceImpl implements TimesheetProjectService {
 		return theTimesheetProject;
 	}
 
+	@Override
+	public List<TimesheetProject> findByProjectIdAndTimesheet(int projectId, Timesheet timesheetId) {
+		// TODO Auto-generated method stub
+		return timesheetProjectRepository.findByProjectIdAndTimesheet(projectId, timesheetId);
+	}
+
 }

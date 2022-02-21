@@ -1,0 +1,63 @@
+version: '3.1'
+services:
+
+  app:
+    image: timesheet
+    build: 
+      context: .
+    container_name: Timesheet-app
+    depends_on:
+    - timesheet-db
+    environment:
+    - SPRING_DATASOURCE_URL=jdbc:postgresql://timesheet-db:5432/FinalProject
+    - SPRING_DATASOURCE_USERNAME=postgres
+    - SPRING_DATASOURCE_PASSWORD=password
+    - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+    - 8080:8080
+    networks:
+    - spring
+    - postgres
+    
+  timesheet-db:
+    container_name: timesheet-db
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: FinalProject
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    volumes:
+    - postgres:/data/postgres
+    expose: 
+      - 5432
+    ports: 
+      - 5433:5432
+    networks:
+    - postgres
+    restart: unless-stopped
+    
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+    - pgadmin:/var/lib/pgadmin
+    ports:
+    - 5050:80
+    networks:
+    - postgres
+    restart: unless-stopped
+    
+networks:
+  postgres:
+    driver: bridge
+  spring:
+    driver: bridge
+    
+volumes:
+  postgres: null
+  pgadmin: null

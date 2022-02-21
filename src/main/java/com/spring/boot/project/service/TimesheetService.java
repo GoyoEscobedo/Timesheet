@@ -14,9 +14,11 @@ public interface TimesheetService {
 	
 	public void deleteById(int theId);
 	
-	public List<Timesheet> findByIdManager(int idManager);
+	public List<Timesheet> findByUserManager(String userManager);
 	
-	public List<Timesheet> findByIdEmployee(int idEmployee);
+	public List<Timesheet> findByUserEmployee(String userEmployee);
+	
+	public List<Timesheet> findByUserManagerAndUserEmployee(String userManager, String userEmployee);
 
 	
 

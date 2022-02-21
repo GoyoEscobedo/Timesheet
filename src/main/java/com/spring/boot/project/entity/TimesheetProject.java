@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "timesheet_project")
 public class TimesheetProject{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "timesheet_project_id")
 	@JsonIgnore
 	private int idTimesheetProject;

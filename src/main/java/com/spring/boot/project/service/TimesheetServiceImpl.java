@@ -51,15 +51,21 @@ public class TimesheetServiceImpl implements TimesheetService {
 	}
 
 	@Override
-	public List<Timesheet> findByIdManager(int idManager) {
+	public List<Timesheet> findByUserManager(String userManager) {
 		// TODO Auto-generated method stub
-		return timesheetRepository.findByIdManager(idManager);
+		return timesheetRepository.findByUserManager(userManager);
 	}
 
 	@Override
-	public List<Timesheet> findByIdEmployee(int idEmployee) {
+	public List<Timesheet> findByUserEmployee(String userEmployee) {
 		// TODO Auto-generated method stub
-		return timesheetRepository.findByIdEmployee(idEmployee);
+		return timesheetRepository.findByUserEmployee(userEmployee);
+	}
+
+	@Override
+	public List<Timesheet> findByUserManagerAndUserEmployee(String userManager, String userEmployee) {
+		// TODO Auto-generated method stub
+		return timesheetRepository.findByUserManagerAndUserEmployee(userManager, userEmployee);
 	}
 
 }

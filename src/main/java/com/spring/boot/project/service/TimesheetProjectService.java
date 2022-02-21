@@ -15,5 +15,7 @@ public interface TimesheetProjectService {
 	
 	public void deleteById(int theId);
 	
+	public List<TimesheetProject> findByProjectIdAndTimesheet(int projectId, Timesheet timesheetId);
+	
 
 }

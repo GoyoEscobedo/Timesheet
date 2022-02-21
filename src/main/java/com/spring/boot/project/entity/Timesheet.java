@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "timesheet")
 public class Timesheet {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_timesheet")
 	private int idTimesheet;
 	
@@ -28,11 +28,11 @@ public class Timesheet {
 	@Column(name = "end_date")
 	private Date endDate;
 	
-	@Column(name = "id_manager")
-	private int idManager;
+	@Column(name = "user_manager")
+	private String  userManager;
 	
-	@Column(name = "id_employee")
-	private int idEmployee;
+	@Column(name = "user_employee")
+	private String  userEmployee;
 	
 	@OneToMany(mappedBy = "timesheet", fetch = FetchType.LAZY,
 			cascade = CascadeType.ALL)
@@ -43,36 +43,36 @@ public class Timesheet {
 	}
 	
 
-	public Timesheet(int idTimesheet, Date startDate, Date endDate, int idManager, int idEmployee,
+	public Timesheet(int idTimesheet, Date startDate, Date endDate, String userManager, String userEmployee,
 			List<TimesheetProject> timesheetProjects) {
 		super();
 		this.idTimesheet = idTimesheet;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.idManager = idManager;
-		this.idEmployee = idEmployee;
+		this.userManager = userManager;
+		this.userEmployee = userEmployee;
 		this.timesheetProjects = timesheetProjects;
 	}
 
 
 
-	public int getIdEmployee() {
-		return idEmployee;
+	public String getUserEmployee() {
+		return userEmployee;
 	}
 
 
-	public void setIdEmployee(int idEmployee) {
-		this.idEmployee = idEmployee;
+	public void setUserEmployee(String userEmployee) {
+		this.userEmployee = userEmployee;
 	}
 
 
-	public int getIdManager() {
-		return idManager;
+	public String getUserManager() {
+		return userManager;
 	}
 
 
-	public void setIdManager(int idManager) {
-		this.idManager = idManager;
+	public void setUserManager(String userManager) {
+		this.userManager = userManager;
 	}
 
 

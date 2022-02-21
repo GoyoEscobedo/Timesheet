@@ -8,7 +8,9 @@ import com.spring.boot.project.entity.Timesheet;
 
 public interface TimesheetRepository extends JpaRepository<Timesheet, Integer> {
 	
-	List<Timesheet> findByIdManager(int idManager);
+	public List<Timesheet> findByUserManager(String userManager);
 	
-	List<Timesheet> findByIdEmployee(int idEmployee);
+	public List<Timesheet> findByUserEmployee(String userEmployee);
+	
+	public List<Timesheet> findByUserManagerAndUserEmployee(String userManager, String userEmployee);
 }
